@@ -1,0 +1,7 @@
+requests
+python-dotenv
+pandas
+numpy
+ipykernel
+jinja2
+python-frontmatter
