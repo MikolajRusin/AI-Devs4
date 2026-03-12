@@ -8,11 +8,11 @@ class AiDevsHubClient:
         self.base_url = base_url.rstrip('/')
 
     @staticmethod
-    def _fetch_data(url: str, method: str = 'GET', data: dict = None) -> Any:
+    def _fetch_data(url: str, method: str = 'GET', payload: dict = None) -> Any:
         if method == 'GET':
             response = requests.get(url, timeout=30)
         elif method == 'POST':
-            response = requests.post(url, json=data, timeout=30)
+            response = requests.post(url, json=payload, timeout=30)
         response.raise_for_status()
         return response
 
@@ -37,19 +37,28 @@ class AiDevsHubClient:
         dest_path = self._save_data(response.content, dest_path)
         return str(dest_path)
 
-    def get_person_locations(self, api_key: str, data: dict[str, str]) -> list[dict[str, float]]:
+    def get_person_locations(self, api_key: str, name: str, surname: str) -> list[dict[str, float]]:
         url = f'{self.base_url}/api/location'
-        data['apikey'] = api_key
-        response = self._fetch_data(url, method='POST', data=data)
+        payload = {
+            'apikey': api_key,
+            'name': name,
+            'surname': surname
+        }
+        response = self._fetch_data(url, method='POST', payload=payload)
         return response.json()
 
-    def get_person_access_level(self, api_key: str, data: dict[str, str]):
+    def get_person_access_level(self, api_key: str, name: str, surname: str, birth_year: int):
         url = f'{self.base_url}/api/accesslevel'
-        data['apikey'] = api_key
-        response = self._fetch_data(url, method='POST', data=data)
+        payload = {
+            'apikey': api_key,
+            'name': name,
+            'surname': surname,
+            'birthYear': birth_year
+        }
+        response = self._fetch_data(url, method='POST', payload=payload)
         return response.json()
 
-    def verify_people_answer(self, api_key: str, task_name: str, answer: list[dict]) -> dict:
+    def verify_answer(self, api_key: str, task_name: str, answer: list[dict]) -> dict:
         response = requests.post(
             f'{self.base_url}/verify',
             json={
@@ -60,4 +69,4 @@ class AiDevsHubClient:
             timeout=30,
         )
         response.raise_for_status()
-        return response.json()
+        return response.json()      

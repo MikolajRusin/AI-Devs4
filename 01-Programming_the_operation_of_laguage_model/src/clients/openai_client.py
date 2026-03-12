@@ -1,15 +1,16 @@
-import requests
+from openai import OpenAI
 
 
-def create_openrouter_response(
+def create_openai_response(
     api_key: str,
-    base_url: str,
     model: str,
     messages: list[dict],
     response_format: dict | None = None,
     tools: list[dict] | None = None,
-    tool_choice: str | dict | None = None
+    tool_choice: str | dict | None = None,
 ) -> dict:
+    client = OpenAI(api_key=api_key)
+
     payload = {
         'model': model,
         'messages': messages,
@@ -21,15 +22,5 @@ def create_openrouter_response(
     if tool_choice is not None:
         payload['tool_choice'] = tool_choice
 
-    response = requests.post(
-        f"{base_url.rstrip('/')}/chat/completions",
-        headers={
-            'Authorization': f'Bearer {api_key}',
-            'Content-Type': 'application/json',
-        },
-        json=payload,
-        timeout=60,
-    )
-    response.raise_for_status()
-
-    return response.json()
+    response = client.chat.completions.create(**payload)
+    return response.model_dump()

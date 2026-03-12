@@ -2,7 +2,8 @@
 task: "Tag Job Description"
 version: "3.4.0"
 model_config:
-  model: "nvidia/nemotron-3-nano-30b-a3b:free"
+  provider: "OpenRouter"
+  model: "gpt-4.1-mini-2025-04-14"
   temperature: 0
 response_format:
   type: "json_schema"
@@ -13,12 +14,21 @@ response_format:
       type: "object"
       properties:
         tagged_jobs:
-          type: "object"
-          description: "A dictionary where keys are job_ids and values are arrays of tag_ids. Return multiple tag_ids when the job description matches more than one tag."
-          additionalProperties:
-            type: "array"
-            items:
-              type: "string"
+          type: "array"
+          description: "A list of jobs and their associated tags."
+          items:
+            type: "object"
+            properties:
+              job_id:
+                type: "string"
+                description: "The unique identifier of the job."
+              tag_ids:
+                type: "array"
+                description: "An array of tag_ids matching the job description."
+                items:
+                  type: "string"
+            required: ["job_id", "tag_ids"]
+            additionalProperties: false
       required: ["tagged_jobs"]
       additionalProperties: false
 ---

@@ -5,3 +5,4 @@ numpy
 ipykernel
 jinja2
 python-frontmatter
+openai

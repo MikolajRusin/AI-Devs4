@@ -2,7 +2,8 @@
 task: "Find Power Plant Location"
 version: "1.0.0"
 model_config:
-  model: "nvidia/nemotron-3-nano-30b-a3b:free"
+  provider: "OpenAI"
+  model: "gpt-5-mini-2025-08-07"
   temperature: 0
 response_format:
   type: "json_schema"
@@ -13,16 +14,19 @@ response_format:
       type: "object"
       properties:
         power_plant_locations:
-          type: "object"
-          description: "A dictionary where keys are power_plant_code values and values are objects containing longitude and latitude for the resolved power plant location."
-          additionalProperties:
+          type: "array"
+          description: "A list of power plant locations containing code, longitude, and latitude."
+          items:
             type: "object"
             properties:
+              power_plant_code:
+                type: "string"
+                description: "The unique identifier/code of the power plant."
               longitude:
                 type: "number"
               latitude:
                 type: "number"
-            required: ["longitude", "latitude"]
+            required: ["power_plant_code", "longitude", "latitude"]
             additionalProperties: false
       required: ["power_plant_locations"]
       additionalProperties: false
