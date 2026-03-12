@@ -1,6 +1,7 @@
 from ..clients.hub import AiDevsHubClient
-from ..clients.openrouter_client import create_chat_completion
+from ..clients.llm_router import LlmResponseFn
 from ..prompts.tag_jobs import build_tag_jobs_prompt
+from ..prompts.find_power_plant_location import build_find_power_plant_location_prompt
 from ..utils.create_batch import create_batch
 from ..resources.job_tags import id2job_tag
 from ..services.people_service import (
@@ -8,12 +9,23 @@ from ..services.people_service import (
     attach_job_ids, select_people_by_tag
 )
 from ..services.power_plant_service import (
-    load_power_plant_data
+    load_power_plant_data, find_nearest_power_plant
 )
-
 
 from pathlib import Path
 import json
+
+
+def get_parsed_llm_response(prompt_data: dict, get_llm_response: LlmResponseFn) -> dict:
+    raw_response = get_llm_response(
+        model=prompt_data['metadata']['model_config']['model'],
+        messages=[
+            {'role': 'system', 'content': prompt_data['system_message']},
+            {'role': 'user', 'content': prompt_data['user_message']},
+        ],
+        response_format=prompt_data['metadata']['response_format']
+    )
+    return json.loads(raw_response['choices'][0]['message']['content'])
 
 
 # ---- PEOPLE HANDLERS ----
@@ -51,9 +63,8 @@ def filter_people(
 
 def tag_jobs(
     filtered_people_path: str,
-    openrouter_api_key: str,
-    openrouter_base_url: str,
     id_to_tag: dict[int, dict[str, str]],
+    get_llm_response: LlmResponseFn,
     batch_size: int = 10
 ) -> dict[str, list[str]]:
     filtered_data_df = load_people_data(filtered_people_path)
@@ -62,22 +73,11 @@ def tag_jobs(
     tagged_jobs: dict[str, list[str]] = {}
     for batch in create_batch(id_to_job_description, batch_size=batch_size):
         prompt_data = build_tag_jobs_prompt(batch, id_to_tag)
-        response = create_chat_completion(
-            api_key=openrouter_api_key,
-            base_url=openrouter_base_url,
-            model=prompt_data['metadata']['model_config']['model'],
-            messages=[
-                {'role': 'system', 'content': prompt_data['system_message']},
-                {'role': 'user', 'content': prompt_data['user_message']},
-            ],
-            response_format=prompt_data['metadata']['response_format'],
-        )
-        content = response['choices'][0]['message']['content']
-        parsed = json.loads(content)
+        response = get_parsed_llm_response(prompt_data, get_llm_response)
         tagged_jobs.update(
             {
-                job_id: [int(tag_id) for tag_id in tag_ids] 
-                for job_id, tag_ids in parsed['tagged_jobs'].items()
+                item['job_id']: [int(tag_id) for tag_id in item['tag_ids']] 
+                for item in response['tagged_jobs']
             }
         )
 
@@ -123,7 +123,103 @@ def filter_people_by_job_tag_id(
 def download_power_plant_locations(
     hub_client: AiDevsHubClient, 
     hub_api_key: str, 
+    get_llm_response: LlmResponseFn,
     dest_dir: str | Path
 ) -> dict[str, str]:
     power_plant_data_path = hub_client.download_power_plant_data(hub_api_key, dest_dir)
     power_plant_data = load_power_plant_data(power_plant_data_path)
+
+    power_plants_dict = {
+        city_name: power_plant_info['code'] 
+        for city_name, power_plant_info in power_plant_data['power_plants'].items()
+    }
+    prompt_data = build_find_power_plant_location_prompt(power_plants_dict)
+    response = get_parsed_llm_response(prompt_data, get_llm_response)
+    locations = {
+        item['power_plant_code']: {
+            'longitude': item['longitude'],
+            'latitude': item['latitude']
+        }
+        for item in response['power_plant_locations']
+    }
+
+    for power_plant in power_plant_data['power_plants'].values():
+        power_plant['location'] = locations.get(power_plant['code'], {})
+    
+    with open(power_plant_data_path, 'w') as file:
+        json.dump(power_plant_data, file, indent=4)
+    return {
+        'power_plant_data_path': power_plant_data_path
+    }
+
+def identify_power_plant_suspect(
+    power_plant_data_path: str,
+    filtered_people_path: str,
+    hub_client: AiDevsHubClient,
+    hub_api_key: str
+) -> dict:
+    people_df = load_people_data(filtered_people_path)
+    power_plant_json = load_power_plant_data(power_plant_data_path)
+
+    person_nearest_power_plant = {
+        'power_plant_code': [],
+        'distance': []
+    }
+    for _, person in people_df.iterrows():
+        person_locations = hub_client.get_person_locations(
+            api_key=hub_api_key, 
+            name=person['name'],
+            surname=person['surname']
+        )
+        nearest_power_plant = find_nearest_power_plant(power_plant_json['power_plants'], person_locations)
+        person_nearest_power_plant['power_plant_code'].append(nearest_power_plant['code'])
+        person_nearest_power_plant['distance'].append(nearest_power_plant['distance'])
+    
+    people_df['power_plant_code'] = person_nearest_power_plant['power_plant_code']
+    people_df['distance'] = person_nearest_power_plant['distance']
+    people_df.to_csv(Path(filtered_people_path).parent / 'filtered_people_with_code.csv', index=False)
+
+    suspect = people_df.loc[people_df['distance'].idxmin()]
+
+    return {
+        'name': suspect['name'],
+        'surname': suspect['surname'],
+        'birth_date': suspect['birthDate'],
+        'power_plant_code': suspect['power_plant_code'],
+    }
+
+def get_access_level(
+    name: str,
+    surname: str,
+    birth_year: int,
+    hub_client: AiDevsHubClient, 
+    hub_api_key: str,
+) -> dict:
+    return hub_client.get_person_access_level(
+        api_key=hub_api_key, 
+        name=name,
+        surname=surname,
+        birth_year=birth_year
+    )
+
+def send_message(
+    name: str, 
+    surname: str, 
+    access_level: int, 
+    power_plant_code: str,
+    message_header: str,
+    hub_client: AiDevsHubClient, 
+    hub_api_key: str,
+) -> dict:
+    answer = {
+        'name': name,
+        'surname': surname,
+        'accessLevel': access_level,
+        'powerPlant': power_plant_code
+    }
+    response = hub_client.verify_answer(
+        api_key=hub_api_key,
+        task_name=message_header,
+        answer=answer
+    )
+    return response

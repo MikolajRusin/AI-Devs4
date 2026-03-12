@@ -3,37 +3,65 @@
         "Zabrze": {
             "is_active": true,
             "power": "35 MW",
-            "code": "PWR3847PL"
+            "code": "PWR3847PL",
+            "location": {
+                "longitude": 18.7858,
+                "latitude": 50.3249
+            }
         },
-        "Piotrków Trybunalski": {
+        "Piotrk\u00f3w Trybunalski": {
             "is_active": true,
             "power": "28 MW",
-            "code": "PWR5921PL"
+            "code": "PWR5921PL",
+            "location": {
+                "longitude": 19.7038,
+                "latitude": 51.4059
+            }
         },
-        "Grudziądz": {
+        "Grudzi\u0105dz": {
             "is_active": true,
             "power": "1138 MW",
-            "code": "PWR7264PL"
+            "code": "PWR7264PL",
+            "location": {
+                "longitude": 18.7539,
+                "latitude": 53.4842
+            }
         },
         "Tczew": {
             "is_active": true,
             "power": "31 MW",
-            "code": "PWR1593PL"
+            "code": "PWR1593PL",
+            "location": {
+                "longitude": 18.7772,
+                "latitude": 54.0924
+            }
         },
         "Radom": {
             "is_active": true,
             "power": "38 MW",
-            "code": "PWR8406PL"
+            "code": "PWR8406PL",
+            "location": {
+                "longitude": 21.1471,
+                "latitude": 51.4027
+            }
         },
         "Chelmno": {
             "is_active": true,
             "power": "128 MW",
-            "code": "PWR2758PL"
+            "code": "PWR2758PL",
+            "location": {
+                "longitude": 18.426,
+                "latitude": 53.348
+            }
         },
-        "Żarnowiec": {
+        "\u017barnowiec": {
             "is_active": false,
             "power": "0 MW",
-            "code": "PWR6132PL"
+            "code": "PWR6132PL",
+            "location": {
+                "longitude": 17.7833,
+                "latitude": 54.5333
+            }
         }
     }
 }
