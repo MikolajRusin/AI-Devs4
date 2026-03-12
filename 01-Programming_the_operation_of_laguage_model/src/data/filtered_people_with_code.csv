@@ -1,14 +1,7 @@
 name,surname,gender,birthDate,birthPlace,birthCountry,job,job_id,power_plant_code,distance
-<<<<<<< HEAD
-Cezary,Żurek,M,1987-08-07,Grudziądz,Polska,"Jest kluczowym specjalistą w dziedzinie przepływu towarów, odpowiedzialnym za optymalizację procesów. Zajmuje się zarządzaniem magazynami i transportem.",2,PWR3847PL,2.6300629870832712
-Jacek,Nowak,M,1991-11-23,Grudziądz,Polska,"Kluczowy gracz w świecie, gdzie towary muszą docierać do celu szybko i sprawnie. Odpowiada za wybór najlepszych metod transportu, negocjacje z przewoźnikami i zarządzanie dokumentacją.",8,PWR3847PL,8.899818075585845
-Oskar,Sieradzki,M,1993-12-18,Grudziądz,Polska,"Osoba ta jest odpowiedzialna za to, aby materiały trafiały tam, gdzie są potrzebne, w odpowiednim czasie i ilości. Analizuje potrzeby i projektuje najlepsze rozwiązania.",11,PWR1593PL,9.349606715737147
-Wojciech,Bielik,M,1986-06-24,Grudziądz,Polska,"Zajmuje się kompleksowym zarządzaniem ruchem towarowym, od planowania po realizację. To on decyduje, gdzie trafiają poszczególne towary. Jego celem jest zapewnienie maksymalnej efektywności i minimalizacji kosztów.",19,PWR2758PL,1.0671912677977375
-Wacław,Jasiński,M,1986-03-01,Grudziądz,Polska,"Ta osoba jest mózgiem operacji związanych z przepływem towarów. Jej zadaniem jest zapewnienie, że wszystkie elementy systemu działają spójnie.",25,PWR8406PL,14.111304359925496
-=======
-Cezary,Żurek,M,1987-08-07,Grudziądz,Polska,"Jest kluczowym specjalistą w dziedzinie przepływu towarów, odpowiedzialnym za optymalizację procesów. Zajmuje się zarządzaniem magazynami i transportem.",2,PWR3847PL,2.540106824573743
-Jacek,Nowak,M,1991-11-23,Grudziądz,Polska,"Kluczowy gracz w świecie, gdzie towary muszą docierać do celu szybko i sprawnie. Odpowiada za wybór najlepszych metod transportu, negocjacje z przewoźnikami i zarządzanie dokumentacją.",8,PWR3847PL,8.98101265782389
-Oskar,Sieradzki,M,1993-12-18,Grudziądz,Polska,"Osoba ta jest odpowiedzialna za to, aby materiały trafiały tam, gdzie są potrzebne, w odpowiednim czasie i ilości. Analizuje potrzeby i projektuje najlepsze rozwiązania.",11,PWR1593PL,9.344810407857558
-Wojciech,Bielik,M,1986-06-24,Grudziądz,Polska,"Zajmuje się kompleksowym zarządzaniem ruchem towarowym, od planowania po realizację. To on decyduje, gdzie trafiają poszczególne towary. Jego celem jest zapewnienie maksymalnej efektywności i minimalizacji kosztów.",19,PWR2758PL,0.8587518614121908
-Wacław,Jasiński,M,1986-03-01,Grudziądz,Polska,"Ta osoba jest mózgiem operacji związanych z przepływem towarów. Jej zadaniem jest zapewnienie, że wszystkie elementy systemu działają spójnie.",25,PWR8406PL,14.109503101363506
->>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
+Cezary,Żurek,M,1987-08-07,Grudziądz,Polska,"Jest kluczowym specjalistą w dziedzinie przepływu towarów, odpowiedzialnym za optymalizację procesów. Zajmuje się zarządzaniem magazynami i transportem.",6,PWR3847PL,2.5289869205893707
+Jacek,Nowak,M,1991-11-23,Grudziądz,Polska,"Kluczowy gracz w świecie, gdzie towary muszą docierać do celu szybko i sprawnie. Odpowiada za wybór najlepszych metod transportu, negocjacje z przewoźnikami i zarządzanie dokumentacją.",13,PWR3847PL,8.924912628900309
+Oskar,Sieradzki,M,1993-12-18,Grudziądz,Polska,"Osoba ta jest odpowiedzialna za to, aby materiały trafiały tam, gdzie są potrzebne, w odpowiednim czasie i ilości. Analizuje potrzeby i projektuje najlepsze rozwiązania.",22,PWR1593PL,9.358840728105907
+Stefan,Kaczor,M,1979-12-20,Grudziądz,Polska,"Odpowiedzialność za sprawne przeprowadzanie towarów przez granice i magazyny. Wymaga to wiedzy o przepisach celnych, podatkowych i handlowych.",29,PWR3847PL,3.0853861198455657
+Wojciech,Bielik,M,1986-06-24,Grudziądz,Polska,"Zajmuje się kompleksowym zarządzaniem ruchem towarowym, od planowania po realizację. To on decyduje, gdzie trafiają poszczególne towary. Jego celem jest zapewnienie maksymalnej efektywności i minimalizacji kosztów.",35,PWR2758PL,0.7687887966476408
+Wacław,Jasiński,M,1986-03-01,Grudziądz,Polska,"Ta osoba jest mózgiem operacji związanych z przepływem towarów. Jej zadaniem jest zapewnienie, że wszystkie elementy systemu działają spójnie.",42,PWR8406PL,14.12424383309904

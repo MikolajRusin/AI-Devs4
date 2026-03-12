@@ -148,11 +148,7 @@ class FindHimAgent:
         ]
         self._log_message('USER', messages[-1]['content'])
 
-<<<<<<< HEAD
-        for step in range(1, 11):
-=======
         for _ in range(12):
->>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
             response = self.create_agent_response(
                 model='gpt-5-mini',
                 messages=messages,

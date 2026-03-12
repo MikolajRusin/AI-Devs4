@@ -5,13 +5,8 @@
             "power": "35 MW",
             "code": "PWR3847PL",
             "location": {
-<<<<<<< HEAD
-                "longitude": 18.7858,
-                "latitude": 50.3249
-=======
-                "longitude": 18.785135,
-                "latitude": 50.324013
->>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
+                "longitude": 18.786,
+                "latitude": 50.324
             }
         },
         "Piotrk\u00f3w Trybunalski": {
@@ -19,13 +14,8 @@
             "power": "28 MW",
             "code": "PWR5921PL",
             "location": {
-<<<<<<< HEAD
-                "longitude": 19.7038,
-                "latitude": 51.4059
-=======
-                "longitude": 19.703005,
-                "latitude": 51.405398
->>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
+                "longitude": 19.703,
+                "latitude": 51.405
             }
         },
         "Grudzi\u0105dz": {
@@ -33,13 +23,8 @@
             "power": "1138 MW",
             "code": "PWR7264PL",
             "location": {
-<<<<<<< HEAD
-                "longitude": 18.7539,
-                "latitude": 53.4842
-=======
-                "longitude": 18.753104,
-                "latitude": 53.484219
->>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
+                "longitude": 18.753,
+                "latitude": 53.483
             }
         },
         "Tczew": {
@@ -47,13 +32,8 @@
             "power": "31 MW",
             "code": "PWR1593PL",
             "location": {
-<<<<<<< HEAD
-                "longitude": 18.7772,
-                "latitude": 54.0924
-=======
-                "longitude": 18.777217,
-                "latitude": 54.092008
->>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
+                "longitude": 18.777,
+                "latitude": 54.092
             }
         },
         "Radom": {
@@ -61,13 +41,8 @@
             "power": "38 MW",
             "code": "PWR8406PL",
             "location": {
-<<<<<<< HEAD
-                "longitude": 21.1471,
-                "latitude": 51.4027
-=======
-                "longitude": 21.147127,
-                "latitude": 51.402692
->>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
+                "longitude": 21.147,
+                "latitude": 51.402
             }
         },
         "Chelmno": {
@@ -75,13 +50,8 @@
             "power": "128 MW",
             "code": "PWR2758PL",
             "location": {
-<<<<<<< HEAD
-                "longitude": 18.426,
-                "latitude": 53.348
-=======
-                "longitude": 18.423404,
-                "latitude": 53.349128
->>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
+                "longitude": 18.423,
+                "latitude": 53.35
             }
         },
         "\u017barnowiec": {
@@ -89,13 +59,8 @@
             "power": "0 MW",
             "code": "PWR6132PL",
             "location": {
-<<<<<<< HEAD
-                "longitude": 17.7833,
-                "latitude": 54.5333
-=======
-                "longitude": 17.899231,
-                "latitude": 54.539472
->>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
+                "longitude": 17.47,
+                "latitude": 54.546
             }
         }
     }

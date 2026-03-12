@@ -1,6 +1,7 @@
 name,surname,gender,birthDate,birthPlace,birthCountry,job,job_id
-Cezary,Żurek,M,1987-08-07,Grudziądz,Polska,"Jest kluczowym specjalistą w dziedzinie przepływu towarów, odpowiedzialnym za optymalizację procesów. Zajmuje się zarządzaniem magazynami i transportem.",2
-Jacek,Nowak,M,1991-11-23,Grudziądz,Polska,"Kluczowy gracz w świecie, gdzie towary muszą docierać do celu szybko i sprawnie. Odpowiada za wybór najlepszych metod transportu, negocjacje z przewoźnikami i zarządzanie dokumentacją.",8
-Oskar,Sieradzki,M,1993-12-18,Grudziądz,Polska,"Osoba ta jest odpowiedzialna za to, aby materiały trafiały tam, gdzie są potrzebne, w odpowiednim czasie i ilości. Analizuje potrzeby i projektuje najlepsze rozwiązania.",11
-Wojciech,Bielik,M,1986-06-24,Grudziądz,Polska,"Zajmuje się kompleksowym zarządzaniem ruchem towarowym, od planowania po realizację. To on decyduje, gdzie trafiają poszczególne towary. Jego celem jest zapewnienie maksymalnej efektywności i minimalizacji kosztów.",19
-Wacław,Jasiński,M,1986-03-01,Grudziądz,Polska,"Ta osoba jest mózgiem operacji związanych z przepływem towarów. Jej zadaniem jest zapewnienie, że wszystkie elementy systemu działają spójnie.",25
+Cezary,Żurek,M,1987-08-07,Grudziądz,Polska,"Jest kluczowym specjalistą w dziedzinie przepływu towarów, odpowiedzialnym za optymalizację procesów. Zajmuje się zarządzaniem magazynami i transportem.",6
+Jacek,Nowak,M,1991-11-23,Grudziądz,Polska,"Kluczowy gracz w świecie, gdzie towary muszą docierać do celu szybko i sprawnie. Odpowiada za wybór najlepszych metod transportu, negocjacje z przewoźnikami i zarządzanie dokumentacją.",13
+Oskar,Sieradzki,M,1993-12-18,Grudziądz,Polska,"Osoba ta jest odpowiedzialna za to, aby materiały trafiały tam, gdzie są potrzebne, w odpowiednim czasie i ilości. Analizuje potrzeby i projektuje najlepsze rozwiązania.",22
+Stefan,Kaczor,M,1979-12-20,Grudziądz,Polska,"Odpowiedzialność za sprawne przeprowadzanie towarów przez granice i magazyny. Wymaga to wiedzy o przepisach celnych, podatkowych i handlowych.",29
+Wojciech,Bielik,M,1986-06-24,Grudziądz,Polska,"Zajmuje się kompleksowym zarządzaniem ruchem towarowym, od planowania po realizację. To on decyduje, gdzie trafiają poszczególne towary. Jego celem jest zapewnienie maksymalnej efektywności i minimalizacji kosztów.",35
+Wacław,Jasiński,M,1986-03-01,Grudziądz,Polska,"Ta osoba jest mózgiem operacji związanych z przepływem towarów. Jej zadaniem jest zapewnienie, że wszystkie elementy systemu działają spójnie.",42
