@@ -35,8 +35,17 @@
     "11": [
         2
     ],
+<<<<<<< HEAD
     "12": [],
     "13": [],
+=======
+    "12": [
+        5
+    ],
+    "13": [
+        5
+    ],
+>>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
     "14": [
         1
     ],
@@ -57,7 +66,12 @@
         2
     ],
     "20": [
+<<<<<<< HEAD
         6
+=======
+        6,
+        5
+>>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
     ],
     "21": [
         4
@@ -67,8 +81,12 @@
         5
     ],
     "23": [
+<<<<<<< HEAD
         7,
         5
+=======
+        7
+>>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
     ],
     "24": [
         7
@@ -80,7 +98,12 @@
         1
     ],
     "27": [
+<<<<<<< HEAD
         6
+=======
+        6,
+        5
+>>>>>>> s01e02-techniques-for-connecting-the-model-with-tools
     ],
     "28": [
         1
