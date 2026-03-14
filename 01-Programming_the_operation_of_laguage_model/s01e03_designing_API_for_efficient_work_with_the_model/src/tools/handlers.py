@@ -19,8 +19,10 @@ def check_package_status(
             'apikey': hub_api_key,
             'action': 'check',
             'packageid': packageid
-        }
+        },
+        timeout=10
     )
+    response.raise_for_status()
     logger.info('Package check response status code: %s', response.status_code)
     return response.json()
 
@@ -45,7 +47,9 @@ def redirect_package(
             'packageid': packageid,
             'destination': destination,
             'code': code
-        }
+        },
+        timeout=10
     )
+    response.raise_for_status()
     logger.info('Package redirect response status code: %s', response.status_code)
     return response.json()
