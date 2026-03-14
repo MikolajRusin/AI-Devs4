@@ -10,3 +10,4 @@ fastapi
 pydantic
 pydantic-settings
 uvicorn
+mcp
