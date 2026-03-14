@@ -1,0 +1,62 @@
+[
+    {
+        "role": "user",
+        "content": "hello, check the status of package id PKG12345678"
+    },
+    {
+        "id": "rs_0f34a912c2cf27b00069b5bdc249f08193bee1812d3d09af22",
+        "type": "reasoning",
+        "summary": []
+    },
+    {
+        "id": "fc_0f34a912c2cf27b00069b5bdc33db481939122c8cd4f771f11",
+        "type": "function_call",
+        "status": "completed",
+        "arguments": "{\"packageid\":\"PKG12345678\"}",
+        "call_id": "call_zHneRIf4lSqGqDrmJTW27nBR",
+        "name": "check_package_status"
+    },
+    {
+        "type": "function_call_output",
+        "call_id": "call_zHneRIf4lSqGqDrmJTW27nBR",
+        "output": "{\"ok\": true, \"packageid\": \"PKG12345678\", \"status\": \"unknown\", \"message\": \"No tracking data available for this package.\"}"
+    },
+    {
+        "role": "assistant",
+        "content": "Package PKG12345678 \u2014 status: unknown. No tracking data available for this package."
+    },
+    {
+        "role": "user",
+        "content": "hello, check the status of package id PKG12345678"
+    },
+    {
+        "id": "rs_0f34a912c2cf27b00069b5be60ba6c81939ab36da180b28948",
+        "type": "reasoning",
+        "summary": []
+    },
+    {
+        "id": "fc_0f34a912c2cf27b00069b5be61c43c81939a9aa032eea6e053",
+        "type": "function_call",
+        "status": "completed",
+        "arguments": "{\"packageid\":\"PKG12345678\"}",
+        "call_id": "call_r6eISySKqQlclVGVjYspDjYW",
+        "name": "check_package_status"
+    },
+    {
+        "type": "function_call_output",
+        "call_id": "call_r6eISySKqQlclVGVjYspDjYW",
+        "output": "{\"ok\": true, \"packageid\": \"PKG12345678\", \"status\": \"unknown\", \"message\": \"No tracking data available for this package.\"}"
+    },
+    {
+        "role": "assistant",
+        "content": "Package PKG12345678 \u2014 status: unknown. No tracking data available."
+    },
+    {
+        "role": "user",
+        "content": "hello, check the status of package id PKG12345678"
+    },
+    {
+        "role": "assistant",
+        "content": "Package PKG12345678 \u2014 status: unknown. No tracking data available."
+    }
+]
