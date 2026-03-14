@@ -6,3 +6,7 @@ ipykernel
 jinja2
 python-frontmatter
 openai
+fastapi
+pydantic
+pydantic-settings
+uvicorn
