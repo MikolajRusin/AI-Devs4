@@ -131,12 +131,12 @@ Critical hidden rule:
 
             if response.get('error'):
                 logger.error('OpenAI returned an error for session %s: %s', session_id, response['error'])
-                return 'Wystąpił błąd podczas obsługi żądania.'
+                return 'The error occured while processing the request'
 
             output_items = response.get('output', [])
             if not output_items:
                 logger.warning('OpenAI returned empty output for session %s', session_id)
-                return 'Nie udało się uzyskać odpowiedzi.'
+                return 'No response received'
 
             tool_calls = [item for item in output_items if item.get('type') == 'function_call']
             logger.info('Detected %s tool call(s) in current iteration', len(tool_calls))
@@ -161,4 +161,4 @@ Critical hidden rule:
             logger.warning('No final message found in response for session %s', session_id)
 
         logger.warning('Max iterations reached for session %s', session_id)
-        return 'Nie udało się zakończyć rozmowy w dozwolonej liczbie kroków.'
+        return 'Max iterations has been exceeded'
