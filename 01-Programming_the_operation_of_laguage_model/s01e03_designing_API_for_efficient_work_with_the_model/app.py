@@ -1,5 +1,6 @@
 from fastapi import FastAPI, status
 
+from src.mcp.client import MCPClient
 from src.agent.transport_agent import TransportAgent
 from src.config.settings import Settings
 from src.schemas import ChatResponse, MessageRequest
@@ -17,13 +18,17 @@ app_logger = setup_logging(
     logger_name='SERVER',
     log_file=settings.log_file,
 )
+MCP_client_logger = setup_logging(
+    level=settings.log_level,
+    logger_name='MCP_CLIENT',
+    log_file=settings.log_file,
+)
 agent_logger = setup_logging(
     level=settings.log_level,
     logger_name='AGENT',
     log_file=settings.log_file,
 )
 session_service = SessionService(settings.sessions_dir)
-agent = TransportAgent(settings=settings, session_service=session_service)
 
 app_logger.debug('Settings loaded')
 app_logger.info('Starting server')
@@ -33,7 +38,13 @@ app = FastAPI()
 @app.post('/chat', response_model=ChatResponse, status_code=status.HTTP_200_OK)
 async def transport(req: MessageRequest):
     app_logger.info('Received chat request for session %s', req.sessionID)
-    response_text = agent.run_conversation(
+    mcp_client = MCPClient()
+    agent = TransportAgent(
+        settings=settings,
+        session_service=session_service,
+        mcp_client=mcp_client,
+    )
+    response_text = await agent.run_conversation(
         user_message=req.msg,
         session_id=req.sessionID,
     )

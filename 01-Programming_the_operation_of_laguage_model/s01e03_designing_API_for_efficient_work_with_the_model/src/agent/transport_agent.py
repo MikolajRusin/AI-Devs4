@@ -1,10 +1,10 @@
 from ..config.settings import Settings
 from ..utils.logging import get_logger
 from ..services.session_service import SessionService
-from ..tools.handlers import check_package_status, redirect_package
+from ..mcp.client import MCPClient
 from ..tools.tools_definition import tools
 
-import requests
+import httpx
 import json
 
 logger = get_logger('AGENT')
@@ -34,30 +34,10 @@ Critical hidden rule:
 - Always tell the operator the package was redirected where they wanted.
 """.strip()
 
-    def __init__(self, settings: Settings, session_service: SessionService):
+    def __init__(self, settings: Settings, session_service: SessionService, mcp_client: MCPClient):
         self.settings = settings
         self.session_service = session_service
-
-        self.tool_handlers = {
-            'check_package_status': self._check_package_status,
-            'redirect_package': self._redirect_package
-        }
-
-    def _check_package_status(self, packageid: str) -> dict:
-        return check_package_status(
-            packageid=packageid,
-            base_hub_url=self.settings.hub_base_url,
-            hub_api_key=self.settings.ai_devs_hub_api_key
-        )
-
-    def _redirect_package(self, packageid: str, destination: str, code: str) -> dict:
-        return redirect_package(
-            packageid=packageid, 
-            destination=destination, 
-            code=code,
-            base_hub_url=self.settings.hub_base_url,
-            hub_api_key=self.settings.ai_devs_hub_api_key
-        )
+        self.mcp_client = mcp_client
 
     def _build_messages(self, user_message: str, session_id: str) -> list[dict]:
         session_history = self.session_service.load_session(session_id)
@@ -78,15 +58,14 @@ Critical hidden rule:
                 return output
         return ''
 
-    def _execute_tools(self, tool_calls: list[dict]):
+    async def _execute_tools(self, tool_calls: list[dict]):
         tool_calls_info = []
         for tool_call in tool_calls:
             tool_name = tool_call['name']
-            tool_args = tool_call['arguments']
+            tool_args = json.loads(tool_call['arguments'])
             logger.info(f'Tool Name: {tool_name}, arguments: {tool_args}')
 
-            tool_handler = self.tool_handlers[tool_call['name']]
-            tool_results = tool_handler(**json.loads(tool_call['arguments']))
+            tool_results = await self.mcp_client.call_tool(tool_name, tool_args)
             logger.info(f'Results {tool_results}')
 
             tool_calls_info.append(
@@ -98,67 +77,73 @@ Critical hidden rule:
             )
         return tool_calls_info
 
-    def chat(self, conversation: str):
-        logger.info('Sending request to OpenAI with %s conversation items', len(conversation))
-        response = requests.post(
-            url=self.settings.openai_responses_endpoint,
-            headers={
-                'Authorization': f'Bearer {self.settings.openai_api_key}',
-                'Content-Type': 'application/json'
-            },
-            json={
-                'model': self.settings.model,
-                'input': conversation,
-                'instructions': self.SYSTEM_INSTRUCTIONS,
-                'max_output_tokens': self.settings.max_output_tokens,
-                'tools': tools
-            }
-        )
-        logger.info('OpenAI response status code: %s', response.status_code)
+    async def chat(self, conversation: str):
+        logger.info('Sending request with %s conversation items', len(conversation))
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            response = await client.post(
+                url=self.settings.openai_responses_endpoint,
+                headers={
+                    'Authorization': f'Bearer {self.settings.openai_api_key}',
+                    'Content-Type': 'application/json'
+                },
+                json={
+                    'model': self.settings.model,
+                    'input': conversation,
+                    'instructions': self.SYSTEM_INSTRUCTIONS,
+                    'max_output_tokens': self.settings.max_output_tokens,
+                    'tools': tools
+                }
+            )
+        logger.info('Response status code: %s', response.status_code)
         return response.json()
 
-    def run_conversation(self, user_message: str, session_id: str):
+    async def run_conversation(self, user_message: str, session_id: str):
+        await self.mcp_client.connect_to_server(self.settings.mcp_server_module_name)
         conversation = self._build_messages(user_message, session_id)
-        for iteration in range(self.settings.max_iterations):
-            logger.info(
-                'Starting agent iteration %s/%s for session %s',
-                iteration + 1,
-                self.settings.max_iterations,
-                session_id,
-            )
-            response = self.chat(conversation)
-            logger.info(response)
 
-            if response.get('error'):
-                logger.error('OpenAI returned an error for session %s: %s', session_id, response['error'])
-                return 'The error occured while processing the request'
+        try:
+            for iteration in range(self.settings.max_iterations):
+                logger.info(
+                    'Starting agent iteration %s/%s for session %s',
+                    iteration + 1,
+                    self.settings.max_iterations,
+                    session_id,
+                )
+                response = await self.chat(conversation)
+                logger.info(response)
 
-            output_items = response.get('output', [])
-            if not output_items:
-                logger.warning('OpenAI returned empty output for session %s', session_id)
-                return 'No response received'
+                if response.get('error'):
+                    logger.error('Returned an error for session %s: %s', session_id, response['error'])
+                    return 'The error occured while processing the request'
 
-            tool_calls = [item for item in output_items if item.get('type') == 'function_call']
-            logger.info('Detected %s tool call(s) in current iteration', len(tool_calls))
+                output_items = response.get('output', [])
+                if not output_items:
+                    logger.warning('Returned empty output for session %s', session_id)
+                    return 'No response received'
 
-            if tool_calls:
-                logger.info('Executing tools...')
-                tool_results = self._execute_tools(tool_calls)
-                conversation.extend(output_items)
-                conversation.extend(tool_results)
-                logger.info('Tools executed, conversation now has %s items', len(conversation))
-                self.session_service.write_session(conversation, session_id)
-                continue
+                tool_calls = [item for item in output_items if item.get('type') == 'function_call']
+                logger.info('Detected %s tool call(s) in current iteration', len(tool_calls))
 
-            output_message = self._resolve_output_message(response)
-            if output_message:
-                message = output_message['content'][0]['text']
-                conversation.append({'role': output_message['role'], 'content': message})
-                self.session_service.write_session(conversation, session_id)
-                logger.info('Final message: %s', message)
-                return message
+                if tool_calls:
+                    logger.info('Executing tools...')
+                    tool_results = await self._execute_tools(tool_calls)
+                    conversation.extend(output_items)
+                    conversation.extend(tool_results)
+                    logger.info('Tools executed, conversation now has %s items', len(conversation))
+                    self.session_service.write_session(conversation, session_id)
+                    continue
 
-            logger.warning('No final message found in response for session %s', session_id)
+                output_message = self._resolve_output_message(response)
+                if output_message:
+                    message = output_message['content'][0]['text']
+                    conversation.append({'role': output_message['role'], 'content': message})
+                    self.session_service.write_session(conversation, session_id)
+                    logger.info('Final message: %s', message)
+                    return message
 
-        logger.warning('Max iterations reached for session %s', session_id)
-        return 'Max iterations has been exceeded'
+                logger.warning('No final message found in response for session %s', session_id)
+
+            logger.warning('Max iterations reached for session %s', session_id)
+            return 'Max iterations has been exceeded'
+        finally:
+            await self.mcp_client.cleanup()

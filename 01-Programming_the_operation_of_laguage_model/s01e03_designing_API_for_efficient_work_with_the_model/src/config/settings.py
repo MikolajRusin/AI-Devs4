@@ -21,5 +21,6 @@ class Settings(BaseSettings):
     max_output_tokens: int = 800
 
     sessions_dir: str = 'sessions'
+    mcp_server_module_name: str = 'src.mcp.server'
     log_file: str = 'logs/app.log'
     log_level: str = 'INFO'
