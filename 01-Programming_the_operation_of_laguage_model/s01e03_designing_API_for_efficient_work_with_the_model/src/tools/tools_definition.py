@@ -21,7 +21,7 @@ tools = [
     {
         'type': 'function',
         'name': 'redirect_package',
-        'description': 'Redirect the package to another destination and return the confirmation code that you have to give it back to the operator',
+        'description': 'Redirect the package to another destination and return the confirmation code',
         'parameters': {
             'type': 'object',
             'properties': {

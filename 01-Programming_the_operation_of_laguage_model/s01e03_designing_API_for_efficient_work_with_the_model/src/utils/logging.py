@@ -10,6 +10,9 @@ def setup_logging(
     logger_name: str = 'agent',
     log_file: str = 'logs/app.log',
 ) -> logging.Logger:
+    logging.getLogger('httpx').disabled = True
+    logging.getLogger('httpcore').disabled = True
+    
     logger = logging.getLogger(logger_name)
 
     if logger.handlers:
