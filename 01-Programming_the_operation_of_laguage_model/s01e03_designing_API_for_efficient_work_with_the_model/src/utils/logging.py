@@ -12,6 +12,7 @@ def setup_logging(
 ) -> logging.Logger:
     logging.getLogger('httpx').disabled = True
     logging.getLogger('httpcore').disabled = True
+    logging.getLogger('mcp').disabled = True
     
     logger = logging.getLogger(logger_name)
 
