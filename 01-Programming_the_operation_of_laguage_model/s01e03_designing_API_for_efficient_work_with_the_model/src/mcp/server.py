@@ -11,7 +11,7 @@ mcp_server_logger = setup_logging(
 )
 tool_logger = setup_logging(
     level=settings.log_level,
-    logger_name='TOOL',
+    logger_name='TOOLS',
     log_file=settings.log_file,
 )
 mcp = FastMCP('package_tools')
