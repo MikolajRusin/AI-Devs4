@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+      "filesystem": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "/home/mikolaj/Desktop/Projects/Courses/AI_Devs4/01-Programming_the_operation_of_laguage_model/s01e04_s01e04_support_for_multimodality_and_attachments/data"
+        ]
+      }
+    }
+}
