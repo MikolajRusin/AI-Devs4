@@ -1,5 +1,9 @@
+from ..utils.logger import logger
+
 from pathlib import Path
+from typing import Any
 import httpx
+import json
 
 
 class AiDevsHubClient:
@@ -17,6 +21,14 @@ class AiDevsHubClient:
             response.raise_for_status()
         return response
 
+    @staticmethod
+    async def _post(url: str, payload: dict) -> httpx.Response:
+        async with httpx.AsyncClient(timeout=20) as client:
+            response = await client.post(url, json=payload)
+            logger.info(f'AiDevs Response {response.json()}')
+            # response.raise_for_status()
+        return response
+
     async def download_data(self, doc_name: str) -> str:
         url = f'{self.base_url}/dane/doc/{doc_name}'
         response = await self._get(url)
@@ -28,3 +40,15 @@ class AiDevsHubClient:
             dest_path.write_bytes(response.content)
 
         return str(dest_path)
+
+    async def verify_answer(self, task_name: str, declaration: str) -> dict[str, Any]:
+        url = 'https://hub.ag3nts.org/verify'
+        payload = {
+            'apikey': self.api_key,
+            'task': task_name,
+            'answer': {
+                'declaration': declaration
+            }
+        }
+        response = await self._post(url, payload)
+        return response.json()

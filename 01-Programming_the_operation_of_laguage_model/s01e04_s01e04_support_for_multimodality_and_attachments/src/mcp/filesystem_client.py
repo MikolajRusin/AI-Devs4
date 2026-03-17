@@ -75,7 +75,10 @@ class MCPFileSystemClient:
                 success=True,
                 output=json.dumps(content, ensure_ascii=False)
             )
-            return content
+            return {
+                'ok': True,
+                'content': content['content']
+            }
 
         if result.content:
             content = result.content[0]
@@ -85,7 +88,10 @@ class MCPFileSystemClient:
                     success=True,
                     output=content.text
                 )
-                return content.text
+                return {
+                    'ok': True,
+                    'content': content.text
+                }
         
         logger.tool_result(
             tool_name,
