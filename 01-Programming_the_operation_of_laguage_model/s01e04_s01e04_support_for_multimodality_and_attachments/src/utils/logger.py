@@ -107,6 +107,20 @@ class AppLogger:
     def mcp_filesystem(self, message: str) -> None:
         self._logger.info(f"{_label('MCP_FILESYSTEM', _Ansi.BLUE)} {message}")
 
+    def query(self, query: str) -> None:
+        self._logger.info('')
+        self._logger.info(f'{_Ansi.BG_BLUE}{_Ansi.WHITE} QUERY {_Ansi.RESET} {query}')
+        self._logger.info('')
+
+    def response(self, response: str) -> None:
+        self._logger.info('')
+        self._logger.info(f"{_label('RESPONSE', _Ansi.GREEN)} {_truncate(response, 500)}")
+        self._logger.info('')
+
+    def vision(self, message: str) -> None:
+        self._logger.info(f"{_label('VISION', _Ansi.BLUE)}")
+        self._logger.info(f'{_Ansi.DIM} {message}{_Ansi.RESET}')
+
     def hint(self, text: str) -> None:
         self._logger.info('')
         self._logger.info(f'{_Ansi.DIM}{text}{_Ansi.RESET}')
