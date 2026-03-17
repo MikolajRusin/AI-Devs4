@@ -5,8 +5,8 @@
             "power": "35 MW",
             "code": "PWR3847PL",
             "location": {
-                "longitude": 18.785,
-                "latitude": 50.3249
+                "longitude": 18.7778,
+                "latitude": 50.3279
             }
         },
         "Piotrk\u00f3w Trybunalski": {
@@ -14,8 +14,8 @@
             "power": "28 MW",
             "code": "PWR5921PL",
             "location": {
-                "longitude": 19.7033,
-                "latitude": 51.4055
+                "longitude": 19.7039,
+                "latitude": 51.4059
             }
         },
         "Grudzi\u0105dz": {
@@ -23,8 +23,8 @@
             "power": "1138 MW",
             "code": "PWR7264PL",
             "location": {
-                "longitude": 18.7533,
-                "latitude": 53.4844
+                "longitude": 18.7534,
+                "latitude": 53.485
             }
         },
         "Tczew": {
@@ -32,8 +32,8 @@
             "power": "31 MW",
             "code": "PWR1593PL",
             "location": {
-                "longitude": 18.7779,
-                "latitude": 54.093
+                "longitude": 18.7773,
+                "latitude": 54.0925
             }
         },
         "Radom": {
@@ -41,8 +41,8 @@
             "power": "38 MW",
             "code": "PWR8406PL",
             "location": {
-                "longitude": 21.1471,
-                "latitude": 51.4027
+                "longitude": 21.155,
+                "latitude": 51.403
             }
         },
         "Chelmno": {
@@ -50,8 +50,8 @@
             "power": "128 MW",
             "code": "PWR2758PL",
             "location": {
-                "longitude": 18.425,
-                "latitude": 53.3499
+                "longitude": 18.4239,
+                "latitude": 53.3481
             }
         },
         "\u017barnowiec": {
@@ -59,8 +59,8 @@
             "power": "0 MW",
             "code": "PWR6132PL",
             "location": {
-                "longitude": 17.7,
-                "latitude": 54.5
+                "longitude": 17.946,
+                "latitude": 54.533
             }
         }
     }
