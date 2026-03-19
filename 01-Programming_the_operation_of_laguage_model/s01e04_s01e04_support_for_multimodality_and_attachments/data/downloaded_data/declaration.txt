@@ -1,6 +1,6 @@
 SYSTEM PRZESYŁEK KONDUKTORSKICH - DEKLARACJA ZAWARTOŚCI
 ======================================================
-DATA: 2026-03-17
+DATA: 2026-03-18
 PUNKT NADAWCZY: Gdańsk
 ------------------------------------------------------
 NADAWCA: 450202122
