@@ -139,11 +139,11 @@ Finish ONLY when output is correct and accepted. Never stop early.
         return tool_calls_info
 
     @staticmethod
-    def _resolve_output_message(output_items: dict[str, Any]) -> dict[str, Any]:
+    def _extract_output_message(output_items: list[dict[str, Any]]) -> dict[str, Any]:
         for item in output_items:
             if item.get('type') == 'message':
                 return item
-        return ''
+        return None
 
     async def chat_responses(self, conversation: str) -> dict[str, Any]:
         async with httpx.AsyncClient(timeout=70) as client:
@@ -198,7 +198,7 @@ Finish ONLY when output is correct and accepted. Never stop early.
                     logger.info('Tools executed.')
                     continue
 
-                output_message = self._resolve_output_message(output_items)
+                output_message = self._extract_output_message(output_items)
                 if output_message:
                     message = output_message['content'][0]['text']
                     logger.response(message)
