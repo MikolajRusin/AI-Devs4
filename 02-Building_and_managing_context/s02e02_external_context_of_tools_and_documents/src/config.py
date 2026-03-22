@@ -1,6 +1,21 @@
-import os
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+
+class OpenAISettings(BaseModel):
+    api_key: str
+    responses_url: str
+
+
+class OpenRouterSettings(BaseModel):
+    api_key: str
+    responses_url: str
+
+
+class AiDevsHubSettings(BaseModel):
+    api_key: str
+    base_url: str
 
 
 class BoardSettings(BaseModel):
@@ -9,6 +24,7 @@ class BoardSettings(BaseModel):
     width: int = 290
     height: int = 290
 
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file='.env',
@@ -16,26 +32,40 @@ class Settings(BaseSettings):
         extra='ignore'
     )
 
-    ai_devs_hub_api_key: str
-    openrouter_api_key: str
-    openai_api_key: str
-    mistral_api_key: str
+    OPENAI_API_KEY: str
+    OPENROUTER_API_KEY: str
+    AI_DEVS_HUB_API_KEY: str
+    HUB_BASE_URL: str
 
-    hub_base_url: str
-    openrouter_base_url: str = 'https://openrouter.ai/api/v1'
-
-    openai_responses_endpoint: str = 'https://api.openai.com/v1/responses'
-    
     max_iterations: int = 25
     max_output_tokens: int = 800
 
-    openrouter_responses_endpoint: str = 'https://openrouter.ai/api/v1/responses'
-
     current_board: BoardSettings = BoardSettings(
         x_min=236,
-        y_min=97
+        y_min=97,
     )
     solved_board: BoardSettings = BoardSettings(
         x_min=140,
-        y_min=88
+        y_min=88,
     )
+
+    @property
+    def openai(self) -> OpenAISettings:
+        return OpenAISettings(
+            api_key=self.OPENAI_API_KEY,
+            responses_url="https://api.openai.com/v1/responses",
+        )
+
+    @property
+    def openrouter(self) -> OpenRouterSettings:
+        return OpenRouterSettings(
+            api_key=self.OPENROUTER_API_KEY,
+            responses_url="https://openrouter.ai/api/v1/responses",
+        )
+
+    @property
+    def ai_devs_hub(self) -> AiDevsHubSettings:
+        return AiDevsHubSettings(
+            api_key=self.AI_DEVS_HUB_API_KEY,
+            base_url=self.HUB_BASE_URL,
+        )
