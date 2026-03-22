@@ -12,3 +12,5 @@ pydantic-settings
 uvicorn
 mcp
 httpx
+opencv-python
+matplotlib
