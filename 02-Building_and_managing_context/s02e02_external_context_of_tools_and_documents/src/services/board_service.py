@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 from pathlib import Path
 
-from ..config import BoardSettings
 from ..clients.hub_client import AiDevsHubClient
 
 
@@ -14,5 +13,5 @@ def load_board(img_board_path: str | Path) -> np.ndarray:
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     return img
 
-def crop_board(img_board: np.ndarray, x_min: int | float, y_min: int | float, width: int | float, height: int | float) -> str:
+def crop_board(img_board: np.ndarray, x_min: int | float, y_min: int | float, width: int | float, height: int | float) -> np.ndarray:
     return img_board[y_min:y_min + width, x_min:x_min + height]
