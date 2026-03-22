@@ -8,7 +8,7 @@ NEU - neutral
 # Rules
 
 - Reactor-related - NEU
-- Weapons parts - DNG
+- Weapons - DNG
 - Otherwise by meaning
 - Return only DNG or NEU
 
