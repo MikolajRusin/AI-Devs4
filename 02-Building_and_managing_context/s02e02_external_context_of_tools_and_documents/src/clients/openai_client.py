@@ -5,14 +5,17 @@ def openai_responses(
     url: str,
     api_key: str,
     model: str,
-    messages: list[dict],
+    conversation: list[dict],
+    instructions: str | None = None,
     response_format: dict | None = None,
     tools: list[dict] | None = None
 ) -> dict:
     payload = {
         'model': model,
-        'messages': messages
+        'input': conversation
     }
+    if instructions is not None:
+        payload['instructions'] = instructions
     if response_format is not None:
         payload['response_format'] = response_format
     if tools is not None:

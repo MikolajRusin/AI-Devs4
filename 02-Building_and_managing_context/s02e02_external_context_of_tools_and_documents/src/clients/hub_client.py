@@ -1,7 +1,6 @@
-import json
-from pathlib import Path
-
 import requests
+from typing import Literal
+from pathlib import Path
 
 
 class AiDevsHubClient:
@@ -11,13 +10,13 @@ class AiDevsHubClient:
         self.download_dir_path = Path(__file__).parents[2] / 'data' / 'raw_img'
         self.download_dir_path.mkdir(parents=True, exist_ok=True)
 
-    def download_board_image(self, final_board: bool = False) -> str:
-        if final_board:
-            file_name = 'solved_electricity.png'
-            url = f'{self.base_url}/i/{file_name}'
-        else:
+    def download_board_image(self, board: Literal['current', 'solved'] = 'current') -> str:
+        if board == 'current':
             file_name = 'electricity.png'
             url = f'{self.base_url}/data/{self.api_key}/{file_name}'
+        else:
+            file_name = 'solved_electricity.png'
+            url = f'{self.base_url}/i/{file_name}'
             
         response = requests.get(url)
         response.raise_for_status()
@@ -25,3 +24,26 @@ class AiDevsHubClient:
         dest_path = self.download_dir_path / file_name
         dest_path.write_bytes(response.content)
         return str(dest_path)
+
+    def rotate_cable(self, cable_code: str) -> dict:
+        url = f'{self.base_url}/verify'
+        response = requests.post(
+            url,
+            json={
+                'apikey': self.api_key,
+                'task': 'electricity',
+                'answer': {
+                    'rotate': cable_code
+                }
+            }
+        )
+        response.raise_for_status()
+        return response.json()
+
+    def reset_board(self) -> dict:
+        url = f'{self.base_url}/data/{self.api_key}/electricity.png?reset=1'
+        response = requests.get(
+            url,
+            params={'reset': '1'}
+        )
+        return response

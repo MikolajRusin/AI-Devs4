@@ -10,7 +10,7 @@ class OpenAISettings(BaseModel):
 
 class OpenRouterSettings(BaseModel):
     api_key: str
-    responses_url: str
+    completions_url: str
 
 
 class AiDevsHubSettings(BaseModel):
@@ -37,6 +37,7 @@ class Settings(BaseSettings):
     AI_DEVS_HUB_API_KEY: str
     HUB_BASE_URL: str
 
+    agent_model: str = 'gpt-5-mini'
     max_iterations: int = 25
     max_output_tokens: int = 800
 
@@ -53,14 +54,14 @@ class Settings(BaseSettings):
     def openai(self) -> OpenAISettings:
         return OpenAISettings(
             api_key=self.OPENAI_API_KEY,
-            responses_url="https://api.openai.com/v1/responses",
+            responses_url='https://api.openai.com/v1/responses',
         )
 
     @property
     def openrouter(self) -> OpenRouterSettings:
         return OpenRouterSettings(
             api_key=self.OPENROUTER_API_KEY,
-            responses_url="https://openrouter.ai/api/v1/responses",
+            completions_url='https://openrouter.ai/api/v1/chat/completions',
         )
 
     @property

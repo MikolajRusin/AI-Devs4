@@ -1,17 +1,17 @@
 import requests
 
 
-def openrouter_responses(
+def openrouter_completions(
     url: str,
     api_key: str,
     model: str,
-    messages: list[dict],
+    conversation: list[dict],
     response_format: dict | None = None,
     tools: list[dict] | None = None
 ) -> dict:
     payload = {
         'model': model,
-        'messages': messages
+        'messages': conversation
     }
     if response_format is not None:
         payload['response_format'] = response_format
