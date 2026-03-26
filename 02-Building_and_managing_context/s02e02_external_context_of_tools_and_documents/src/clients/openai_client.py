@@ -17,7 +17,9 @@ def openai_responses(
     if instructions is not None:
         payload['instructions'] = instructions
     if response_format is not None:
-        payload['response_format'] = response_format
+        payload['text'] = {
+            'format': response_format
+        }
     if tools is not None:
         payload['tools'] = tools
     
