@@ -1,12 +1,21 @@
 {
-    "mcpServers": {
-      "filesystem": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-filesystem",
-          "/home/mikolaj/Desktop/Projects/Courses/AI_Devs4/02-Building_and_managing_context/s02e03_documents_and_long_term_memory_as_tools/workspace"
-        ]
-      }
+  "mcpServers": {
+    "filesystem_main": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/.../workspace/results"
+      ]
+    },
+    "filesystem_logs": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/.../workspace/logs",
+        "/.../workspace/results"
+      ]
     }
+  }
 }
