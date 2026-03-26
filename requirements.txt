@@ -14,3 +14,4 @@ mcp
 httpx
 opencv-python
 matplotlib
+tiktoken
