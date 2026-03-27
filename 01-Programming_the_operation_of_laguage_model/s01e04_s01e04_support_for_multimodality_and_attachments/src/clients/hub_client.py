@@ -42,7 +42,7 @@ class AiDevsHubClient:
         return str(dest_path)
 
     async def verify_answer(self, task_name: str, declaration: str) -> dict[str, Any]:
-        url = 'https://hub.ag3nts.org/verify'
+        url = f'{self.base_url}/verify'
         payload = {
             'apikey': self.api_key,
             'task': task_name,
