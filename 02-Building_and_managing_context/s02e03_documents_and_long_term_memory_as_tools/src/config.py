@@ -6,11 +6,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class OpenAISettings(BaseModel):
     api_key: str
     responses_url: str
+    provider: str = 'OpenAI'
 
 
 class OpenRouterSettings(BaseModel):
     api_key: str
     completions_url: str
+    provider: str = 'OpenRouter'
 
 
 class AiDevsHubSettings(BaseModel):

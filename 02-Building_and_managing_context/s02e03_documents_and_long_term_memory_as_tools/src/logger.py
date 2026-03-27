@@ -50,6 +50,24 @@ def _truncate(value: Any, max_length: int) -> str:
     return text if len(text) <= max_length else f'{text[:max_length]}...'
 
 
+def _shorten_workspace_path(value: str) -> str:
+    marker = '/workspace/'
+    if marker in value:
+        _, suffix = value.split(marker, 1)
+        return f'../workspace/{suffix}'
+    return value
+
+
+def _prepare_log_value(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: _prepare_log_value(val) for key, val in value.items()}
+    if isinstance(value, list):
+        return [_prepare_log_value(item) for item in value]
+    if isinstance(value, str):
+        return _shorten_workspace_path(value)
+    return value
+
+
 def _label(name: str, color: str) -> str:
     return f'{color}[{name}]{_Ansi.RESET}'
 
@@ -102,6 +120,9 @@ class AppLogger:
     def start(self, message: str) -> None:
         self._logger.info(f'{_label("START", _Ansi.CYAN)} {message}')
 
+    def stop(self, message: str) -> None:
+        self._logger.info(f'{_label("STOP", _Ansi.BG_MAGENTA)} {message}')
+
     def query(self, query: str) -> None:
         self._logger.info('')
         self._logger.info(f'{_Ansi.BG_BLUE}{_Ansi.WHITE} QUERY {_Ansi.RESET} {query}')
@@ -118,12 +139,20 @@ class AppLogger:
         self._logger.info('')
 
     def tool(self, name: str, args: Any) -> None:
-        arg_str = _truncate(json.dumps(args, ensure_ascii=False), 100)
+        prepared_args = _prepare_log_value(args)
+        arg_str = _truncate(json.dumps(prepared_args, ensure_ascii=False), 300)
         self._logger.info(f'{_label("TOOL", _Ansi.YELLOW)} {name} {_Ansi.DIM}{arg_str}{_Ansi.RESET}')
 
     def tool_result(self, name: str, success: bool, output: str) -> None:
         status = 'OK' if success else 'ERROR'
         self._logger.info(f'{_label("TOOL_RESULT", _Ansi.DIM)} {name} {status} {_truncate(output, 150)}')
+
+    def agent(self, message: str, context: Any | None = None) -> None:
+        context_str = ''
+        if context is not None:
+            serialized = json.dumps(context, ensure_ascii=False)
+            context_str = f' {_Ansi.DIM}{_truncate(serialized, 200)}{_Ansi.RESET}'
+        self._logger.info(f'{_label("AGENT", _Ansi.MAGENTA)} {message}{context_str}')
 
     def agent_iteration(self, current: int, total: int) -> None:
         self._logger.info(f'{_label("AGENT", _Ansi.MAGENTA)} iteration {current}/{total}')

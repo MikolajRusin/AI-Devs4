@@ -1,5 +1,7 @@
 import httpx
 
+from ..logger import logger
+
 
 async def openrouter_completions(
     url: str,
@@ -17,8 +19,11 @@ async def openrouter_completions(
         payload['response_format'] = response_format
     if tools is not None:
         payload['tools'] = tools
-    
-    async with httpx.AsyncClient(timeout=60) as client: 
+
+    logger.start(
+        f'OpenRouter completions request model={model} messages={len(conversation)} tools={0 if tools is None else len(tools)}'
+    )
+    async with httpx.AsyncClient(timeout=60) as client:
         response = await client.post(
             url=url,
             headers={
@@ -29,4 +34,5 @@ async def openrouter_completions(
             timeout=60
         )
     response.raise_for_status()
+    logger.success(f'OpenRouter completions request completed status={response.status_code}')
     return response.json()

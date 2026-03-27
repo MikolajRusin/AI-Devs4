@@ -41,5 +41,5 @@ async def directory_tree(dir_path: str, filesystem_client: MCPFileSystemClient) 
     )
     return {
         'ok': result['ok'],
-        'content': json.loads(result['content'])
+        'content': json.loads(result['content']) if result['ok'] else result['error']
     }

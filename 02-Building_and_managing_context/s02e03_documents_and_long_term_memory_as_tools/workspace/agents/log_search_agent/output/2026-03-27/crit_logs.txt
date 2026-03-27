@@ -1,0 +1,15 @@
+[2026-03-26 06:04:13] [CRIT] ECCS8 reported runaway outlet temperature. Protection interlock initiated reactor trip.
+[2026-03-26 06:16:56] [CRIT] WSTPOOL2 absorption path reached emergency boundary. Heat rejection is no longer sufficient.
+[2026-03-26 08:00:26] [CRIT] ECCS8 core cooling cannot maintain safe gradient. Immediate protective actions are required.
+[2026-03-26 10:15:56] [CRIT] WTANK07 coolant level is below critical threshold. Shutdown logic is moving to hard trip stage.
+[2026-03-26 11:01:33] [CRIT] WTRPMP lost stable prime under peak thermal demand. Core loop continuity is compromised.
+[2026-03-26 12:51:11] [CRIT] FIRMWARE entered emergency guard branch after repeated safety faults. Manual override is locked.
+[2026-03-26 12:56:27] [CRIT] STMTURB12 decoupling sequence forced by thermal risk. Energy conversion is terminated.
+[2026-03-26 13:37:40] [CRIT] PWR01 can no longer sustain stable feed for cooling auxiliaries. Critical loads are shedding.
+[2026-03-26 14:52:40] [CRIT] Safety bootstrap read missing environment marker SAFETY_CHECK=pass. FIRMWARE continues in restricted validation mode.
+[2026-03-26 16:06:47] [CRIT] WSTPOOL2 entered critical protection state during startup. Immediate shutdown safeguards remain active.
+[2026-03-26 19:54:49] [CRIT] ECCS8 cannot remove heat with the current WTANK07 volume. Reactor protection initiates critical stop.
+[2026-03-26 20:05:21] [CRIT] Critical boundary exceeded on ECCS8. Emergency interlock keeps the reactor in protected mode.
+[2026-03-26 20:32:06] [CRIT] Coolant inventory in WTANK07 is below critical threshold for full-loop operation. ECCS8 cannot guarantee reactor heat removal and automatic shutdown is mandatory.
+[2026-03-26 20:59:17] [CRIT] Insufficient cooling capacity confirmed after incomplete WTANK07 refill. Reactor protection system executes final shutdown sequence.
+[2026-03-26 21:37:00] [CRIT] Final trip complete because WTANK07 remained under critical water level. FIRMWARE confirms safe shutdown state with all core operations halted.

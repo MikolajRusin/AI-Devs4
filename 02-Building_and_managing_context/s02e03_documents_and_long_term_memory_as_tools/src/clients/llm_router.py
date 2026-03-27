@@ -1,5 +1,6 @@
 from .openai_client import openai_responses
 from .openrouter_client import openrouter_completions
+from ..logger import logger
 
 
 def create_llm_client(
@@ -8,6 +9,7 @@ def create_llm_client(
     api_key: str
 ):
     provider = provider.lower()
+    logger.info(f'Creating LLM client for provider={provider}')
 
     async def create_response(
         model: str,
@@ -16,6 +18,15 @@ def create_llm_client(
         response_format: dict | None = None,
         tools: list[dict] | None = None
     ):
+        logger.agent(
+            'Dispatching LLM request',
+            {
+                'provider': provider,
+                'model': model,
+                'conversation_items': len(conversation),
+                'tools': 0 if tools is None else len(tools)
+            }
+        )
         if provider == 'openrouter':
             return await openrouter_completions(
                 url=provider_url,
