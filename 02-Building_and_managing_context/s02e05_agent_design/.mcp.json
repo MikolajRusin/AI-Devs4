@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "filesystem_main": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/mikolaj/Desktop/Projects/Courses/AI_Devs4/02-Building_and_managing_context/s02e05_agent_design/workspace"
+      ]
+    }
+  }
+}
