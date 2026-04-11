@@ -16,3 +16,4 @@ opencv-python
 matplotlib
 tiktoken
 html_to_markdown
+beautifulsoup4
