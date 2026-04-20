@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/mikolaj/Desktop/Projects/Courses/AI_Devs4/04-Active_and_context_aware_collaboration_with_AI/s04e04_designing_your_own_knowledge_base_for_ai/workspace"
+      ]
+    }
+  }
+}
