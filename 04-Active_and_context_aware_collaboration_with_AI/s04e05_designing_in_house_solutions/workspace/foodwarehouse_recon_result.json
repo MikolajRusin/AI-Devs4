@@ -1,0 +1,358 @@
+{
+  "users": [
+    {
+      "user_id": 1,
+      "login": "azurek",
+      "name_surname": "Antonina Żurek",
+      "password": "3208b5e09f4572e8abc2d09a7b39995e",
+      "birthday": "1983-09-23",
+      "role": 3,
+      "is_active": 1
+    },
+    {
+      "user_id": 2,
+      "login": "tgajewski",
+      "name_surname": "Tymon Gajewski",
+      "password": "8693b092bd2c229941f7128fa78363e4",
+      "birthday": "1991-04-06",
+      "role": 2,
+      "is_active": 1
+    },
+    {
+      "user_id": 3,
+      "login": "bczajkowski",
+      "name_surname": "Bartosz Czajkowski",
+      "password": "ffecdc5deb2e823f1ca0164325df489d",
+      "birthday": "1989-06-04",
+      "role": 5,
+      "is_active": 1
+    },
+    {
+      "user_id": 4,
+      "login": "esadowska",
+      "name_surname": "Edyta Sadowska",
+      "password": "a2bfd65b39206ff14f11578e7d95ac24",
+      "birthday": "1950-09-20",
+      "role": 4,
+      "is_active": 1
+    },
+    {
+      "user_id": 5,
+      "login": "mkoodziej",
+      "name_surname": "Mariusz Kołodziej",
+      "password": "de11d12b3bf3a9e19be2661177a2e14b",
+      "birthday": "1987-08-14",
+      "role": 2,
+      "is_active": 1
+    },
+    {
+      "user_id": 6,
+      "login": "jgacek",
+      "name_surname": "Jerzy Gacek",
+      "password": "fe4017a71e1cca2f86a892ae79a875c2",
+      "birthday": "1978-12-25",
+      "role": 1,
+      "is_active": 1
+    },
+    {
+      "user_id": 7,
+      "login": "bkurek",
+      "name_surname": "Bożena Kurek",
+      "password": "a68d1fba0ed1817615e1d64abce53145",
+      "birthday": "1951-04-12",
+      "role": 2,
+      "is_active": 1
+    },
+    {
+      "user_id": 8,
+      "login": "gjabonski",
+      "name_surname": "Gustaw Jabłoński",
+      "password": "f0ca11ecb8b751f846dda0650a25687b",
+      "birthday": "1981-06-27",
+      "role": 2,
+      "is_active": 1
+    },
+    {
+      "user_id": 9,
+      "login": "mkrol",
+      "name_surname": "Marcel Król",
+      "password": "b429d188fd3c68b1eb353142e7a7bc6f",
+      "birthday": "1962-09-21",
+      "role": 3,
+      "is_active": 1
+    },
+    {
+      "user_id": 10,
+      "login": "bkos",
+      "name_surname": "Bruno Kłos",
+      "password": "19aaad5b44351abb490bb6ed12561a0d",
+      "birthday": "1992-05-08",
+      "role": 5,
+      "is_active": 1
+    },
+    {
+      "user_id": 11,
+      "login": "iwojcik",
+      "name_surname": "Izabela Wójcik",
+      "password": "f6e644fc55d9a91ce0c2e6b08271baa5",
+      "birthday": "1970-07-20",
+      "role": 1,
+      "is_active": 1
+    },
+    {
+      "user_id": 12,
+      "login": "apietrzak",
+      "name_surname": "Angelika Pietrzak",
+      "password": "2664a66aa149cd02f2ae32598e2c48c5",
+      "birthday": "1976-09-19",
+      "role": 1,
+      "is_active": 1
+    },
+    {
+      "user_id": 13,
+      "login": "ikubiak",
+      "name_surname": "Izabela Kubiak",
+      "password": "007ad08c7bca84d0f28fc28c7de57099",
+      "birthday": "1965-01-31",
+      "role": 1,
+      "is_active": 1
+    },
+    {
+      "user_id": 14,
+      "login": "dsikora",
+      "name_surname": "Dawid Sikora",
+      "password": "5dc448541c662ad2ec994043046ab155",
+      "birthday": "1970-04-29",
+      "role": 3,
+      "is_active": 1
+    },
+    {
+      "user_id": 15,
+      "login": "jmichalski",
+      "name_surname": "Jakub Michalski",
+      "password": "ca7ad3289296bf63f227b954dc3fa87c",
+      "birthday": "1983-04-19",
+      "role": 5,
+      "is_active": 1
+    },
+    {
+      "user_id": 16,
+      "login": "dbaran",
+      "name_surname": "Dionizy Baran",
+      "password": "7c0f723f37a345ebf948e719afa55773",
+      "birthday": "1958-10-25",
+      "role": 5,
+      "is_active": 1
+    },
+    {
+      "user_id": 17,
+      "login": "badamczyk",
+      "name_surname": "Bernadeta Adamczyk",
+      "password": "c0b154836e0b64a5d2b9c9f5935c42ea",
+      "birthday": "1987-07-12",
+      "role": 4,
+      "is_active": 1
+    },
+    {
+      "user_id": 18,
+      "login": "fgacek",
+      "name_surname": "Felicja Gacek",
+      "password": "217dd9dbe01f656f0eefe9bfa3926d91",
+      "birthday": "1955-04-18",
+      "role": 2,
+      "is_active": 1
+    },
+    {
+      "user_id": 19,
+      "login": "switkowski",
+      "name_surname": "Szymon Witkowski",
+      "password": "d64d092100d1b529c88f81ce4e185019",
+      "birthday": "1990-09-05",
+      "role": 5,
+      "is_active": 1
+    },
+    {
+      "user_id": 20,
+      "login": "tjakubowski",
+      "name_surname": "Tomasz Jakubowski",
+      "password": "13b0a4baada52c78c80c4987cc4d3500",
+      "birthday": "2000-09-19",
+      "role": 2,
+      "is_active": 1
+    },
+    {
+      "user_id": 21,
+      "login": "bkoodziej",
+      "name_surname": "Bernadeta Kołodziej",
+      "password": "23fe2cad0945c58f6c2009dbcab52e40",
+      "birthday": "1955-06-26",
+      "role": 2,
+      "is_active": 1
+    },
+    {
+      "user_id": 22,
+      "login": "smalinowska",
+      "name_surname": "Sylwia Malinowska",
+      "password": "a1a689f6c033c04c7b1ac2f09c7e7c72",
+      "birthday": "1987-08-07",
+      "role": 1,
+      "is_active": 1
+    },
+    {
+      "user_id": 23,
+      "login": "kmichalska",
+      "name_surname": "Kamila Michalska",
+      "password": "00094ed9f048d205fd60c57cf6d40633",
+      "birthday": "1998-08-19",
+      "role": 1,
+      "is_active": 1
+    },
+    {
+      "user_id": 24,
+      "login": "dwojciechowska",
+      "name_surname": "Daniela Wojciechowska",
+      "password": "74a187db517a02ad199c737772207593",
+      "birthday": "1996-02-24",
+      "role": 3,
+      "is_active": 1
+    },
+    {
+      "user_id": 25,
+      "login": "akrajewski",
+      "name_surname": "Antoni Krajewski",
+      "password": "d1f5d421a9067b9206b462b406b7cf00",
+      "birthday": "1987-10-12",
+      "role": 5,
+      "is_active": 1
+    },
+    {
+      "user_id": 26,
+      "login": "szajac",
+      "name_surname": "Sylwester Zając",
+      "password": "ff59aaf2a3aef0c007fcb7ebc3d9ff47",
+      "birthday": "1976-10-30",
+      "role": 3,
+      "is_active": 1
+    },
+    {
+      "user_id": 27,
+      "login": "nborowski",
+      "name_surname": "Natan Borowski",
+      "password": "e6e889797702d6515a699baf0cfcfa81",
+      "birthday": "1992-12-16",
+      "role": 2,
+      "is_active": 1
+    },
+    {
+      "user_id": 28,
+      "login": "eszymanski",
+      "name_surname": "Eryk Szymański",
+      "password": "569314fc0a2d5505c5115e8c50010cc0",
+      "birthday": "1970-12-01",
+      "role": 1,
+      "is_active": 1
+    },
+    {
+      "user_id": 29,
+      "login": "bbaszczyk",
+      "name_surname": "Bianka Błaszczyk",
+      "password": "975a737d4a4b40e71d685e85416c0180",
+      "birthday": "2000-10-12",
+      "role": 5,
+      "is_active": 1
+    },
+    {
+      "user_id": 30,
+      "login": "wgowacki",
+      "name_surname": "Wiesław Głowacki",
+      "password": "c5b30f7106cd25c619794153ccf3f737",
+      "birthday": "1972-09-15",
+      "role": 1,
+      "is_active": 1
+    }
+  ],
+  "destinations": {
+    "karlinkowo": 707536,
+    "reszel": 955390,
+    "celbowo": 741906,
+    "cewice": 725741,
+    "tykocin": 390716,
+    "wyszogrod": 917631,
+    "mechowo": 695992,
+    "krokowa": 415722,
+    "mrozy": 471906,
+    "sompolno": 884889,
+    "rydzyna": 961067,
+    "pasym": 988770,
+    "gniewino": 271814,
+    "brudzewo": 234434,
+    "bobolice": 968008,
+    "tolkmicko": 575378,
+    "kleczew": 441899,
+    "opalino": 991828,
+    "rewal": 181279,
+    "frombork": 744542,
+    "resko": 574835,
+    "ryn": 385126,
+    "biskupiec": 369482,
+    "susz": 106710,
+    "bisztynek": 240752,
+    "hel": 790221,
+    "puck": 140606,
+    "choczewo": 529177,
+    "jastarnia": 273656,
+    "darzlubie": 676323,
+    "tarczyn": 413085,
+    "domatowo": 761834,
+    "brok": 169318,
+    "linia": 315955,
+    "korsze": 804616,
+    "pyzdry": 333749,
+    "orneta": 342844,
+    "krobia": 852982,
+    "skoki": 388942,
+    "karlino": 401110
+  },
+  "orders_meta": {
+    "opalino": {
+      "destination": 991828,
+      "creatorID": 2,
+      "signature": "96d66cc4d28484b3c5b9e05e4f79152eb564f6e0"
+    },
+    "domatowo": {
+      "destination": 761834,
+      "creatorID": 2,
+      "signature": "29361bec85afce60df2f3472af1a6e298154e82f"
+    },
+    "brudzewo": {
+      "destination": 234434,
+      "creatorID": 2,
+      "signature": "5d1db416d5a978fa56e9610c3598d821492acaeb"
+    },
+    "darzlubie": {
+      "destination": 676323,
+      "creatorID": 2,
+      "signature": "9c52ae1ab999cfc3b26762dcadcdb2407c5fbde6"
+    },
+    "celbowo": {
+      "destination": 741906,
+      "creatorID": 2,
+      "signature": "d539fbc8eeee8093f9def9e8d2c39e764de1b704"
+    },
+    "mechowo": {
+      "destination": 695992,
+      "creatorID": 2,
+      "signature": "8d75eb210a3d5e80098bd6900d10f9e9791069d2"
+    },
+    "puck": {
+      "destination": 140606,
+      "creatorID": 2,
+      "signature": "414ab8e00fdfc2697876ea4a6db098edc38a0c60"
+    },
+    "karlinkowo": {
+      "destination": 707536,
+      "creatorID": 2,
+      "signature": "534a7ff14801f6bc8614ba92b43b81f92a9222a3"
+    }
+  }
+}

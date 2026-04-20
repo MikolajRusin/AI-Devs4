@@ -1,0 +1,66 @@
+{
+  "created_orders": {
+    "opalino": "25b0dcc638bef2277257e53561fcf4ec",
+    "domatowo": "a300e315b3cbc136cfd9418e3a98e75b",
+    "brudzewo": "83a7d0aa8f12f4bb1635055662736f05",
+    "darzlubie": "f82e3599d5c747c105a2a19b3a269b40",
+    "celbowo": "55435b3c97877dbb6e3ca0ce9ab208fb",
+    "mechowo": "c94567eea68a0f9558b1119287893ade",
+    "puck": "2dd66db609786d3562f2789bf1594fa0",
+    "karlinkowo": "560c22bf440e9900caa0de6335d76001"
+  },
+  "done_response": {
+    "code": 0,
+    "message": "{FLG:JUSTEATIT}",
+    "orders": [
+      {
+        "id": "25b0dcc638bef2277257e53561fcf4ec",
+        "title": "Dostawa dla Opalino",
+        "destination": 991828,
+        "city": "Opalino"
+      },
+      {
+        "id": "a300e315b3cbc136cfd9418e3a98e75b",
+        "title": "Dostawa dla Domatowo",
+        "destination": 761834,
+        "city": "Domatowo"
+      },
+      {
+        "id": "83a7d0aa8f12f4bb1635055662736f05",
+        "title": "Dostawa dla Brudzewo",
+        "destination": 234434,
+        "city": "Brudzewo"
+      },
+      {
+        "id": "f82e3599d5c747c105a2a19b3a269b40",
+        "title": "Dostawa dla Darzlubie",
+        "destination": 676323,
+        "city": "Darzlubie"
+      },
+      {
+        "id": "55435b3c97877dbb6e3ca0ce9ab208fb",
+        "title": "Dostawa dla Celbowo",
+        "destination": 741906,
+        "city": "Celbowo"
+      },
+      {
+        "id": "c94567eea68a0f9558b1119287893ade",
+        "title": "Dostawa dla Mechowo",
+        "destination": 695992,
+        "city": "Mechowo"
+      },
+      {
+        "id": "2dd66db609786d3562f2789bf1594fa0",
+        "title": "Dostawa dla Puck",
+        "destination": 140606,
+        "city": "Puck"
+      },
+      {
+        "id": "560c22bf440e9900caa0de6335d76001",
+        "title": "Dostawa dla Karlinkowo",
+        "destination": 707536,
+        "city": "Karlinkowo"
+      }
+    ]
+  }
+}
